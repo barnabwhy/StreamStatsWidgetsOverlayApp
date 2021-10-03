@@ -1,6 +1,13 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, Menu, autoUpdater, dialog } = require('electron')
 
+// Squirrel Events
+const setupEvents = require('./installers/setupEvents')
+if (setupEvents.handleSquirrelEvent()) {
+  // squirrel event handled and app will exit in 1000ms, so don't do anything else
+  return;
+}
+
 // Auto updater
 const server = 'https://stream-stats-widgets-overlay-app-update-server.vercel.app/'
 const url = `${server}/update/${process.platform}/${app.getVersion()}`
