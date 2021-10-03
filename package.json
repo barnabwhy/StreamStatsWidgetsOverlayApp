@@ -17,6 +17,7 @@
     "@twurple/auth-electron": "^5.0.3",
     "@twurple/chat": "^5.0.3",
     "electron-is-dev": "^2.0.0",
+    "electron-squirrel-startup": "^1.0.0",
     "mathjs": "^9.4.5",
     "uuid": "^8.3.2"
   },
