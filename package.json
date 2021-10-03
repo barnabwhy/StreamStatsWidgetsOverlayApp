@@ -1,0 +1,24 @@
+{
+  "name": "Stream Stats Widgets Overlay App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . StreamStatsWidgetsOverlayApp --overwrite --asar --platform=win32 --arch=x64 --icon=icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Stream Stats Widgets Overlay App\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@twurple/api": "^5.0.3",
+    "@twurple/auth": "^5.0.4",
+    "@twurple/auth-electron": "^5.0.3",
+    "@twurple/chat": "^5.0.3",
+    "mathjs": "^9.4.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "electron": "^11.5.0",
+    "electron-packager": "^15.4.0"
+  }
+}

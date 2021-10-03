@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Stats Widgets Overlay App</title>
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/mdl2-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="topBar">
+    <div id="windowControls">
+      <button id="windowReload"><i class="mdl2 mdl2-refresh" aria-hidden="true"></i></button>
+      <button id="windowMinimize"><i class="mdl2 mdl2-remove" aria-hidden="true"></i></button>
+      <button id="windowClose"><i class="mdl2 mdl2-cancel" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <div id="mainContent">
+    <!-- Pre-Connection -->
+    <div id="connect">
+      <span style="font-size: 12px;"><b>Channel to track:</b></span><br>
+      <input type="text" id="channelInput" placeholder="Username" /><br>
+      <p id="channelInputError" style="visibility: hidden; display: none; color: #e91916; font-size: 10px; margin: 0 0 4px 0;"><b>Input cannot be empty.</b></p>
+      <button id="connectButton" class="purple">Connect to channel</button>
+    </div>
+    <!-- Post-Connection -->
+    <div id="controlPanel">
+      <div class="identity">
+        <button id="openChannelButton" class="purple">View Channel</button>
+        <span style="font-size: 12px;"><b>Tracking:</b></span><br>
+        <span id="trackedChannel"></span>
+      </div>
+      <hr style="border: 2px solid #9146FF;">
+      <div id="overlayControls">
+        <span style="font-size: 12px;"><b>Overlay:</b></span><br>
+        <button id="toggleOverlay" class="purple">Show/Hide</button>
+        <button id="reloadOverlay">Reload</button>
+      </div>
+      <hr style="border: 2px solid #9146FF;">
+      <div id="widgetControls">
+        <span style="font-size: 12px;"><b>Widgets:</b></span><br>
+        <button id="editWidgets">Edit</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "name": "streamStats",
+  "display": "Stream Stats",
+  "type": "group",
+  "pos": {
+    "x": 8,
+    "y": 8,
+    "align": "top-left"
+  },
+  "settings": [
+    {
+      "name": "Viewer count",
+      "type": "toggle",
+      "action": "elemVisibility",
+      "querySelector": ".viewersWidget",
+      "default": true
+    },
+    {
+      "name": "Follower count",
+      "type": "toggle",
+      "action": "elemVisibility",
+      "querySelector": ".followersWidget",
+      "default": true
+    },
+    {
+      "name": "Sub count",
+      "type": "toggle",
+      "action": "elemVisibility",
+      "querySelector": ".subsWidget",
+      "default": true
+    }
+  ],
+  "css": {},
+  "widgets": [
+    {
+      "name": "Viewers",
+      "html": [
+        "<div class='widget-icon purple viewersWidget'>",
+        "  <span class='material-icons'>visibility</span>",
+        "  <span class='widget-text'>0</span>",
+        "</div>"
+      ],
+      "events": [
+        {
+          "name": "viewerCount",
+          "querySelector": ".widget-text",
+          "attribute": "innerText",
+          "expression": "[x]",
+          "format": "commaNumber"
+        }
+      ]
+    },
+    {
+      "name": "Followers",
+      "html": [
+        "<div class='widget-icon purple followersWidget'>",
+        "  <span class='material-icons'>favorite</span>",
+        "  <span class='widget-text'>0</span>",
+        "</div>"
+      ],
+      "events": [
+        {
+          "name": "followerCount",
+          "querySelector": ".widget-text",
+          "attribute": "innerText",
+          "expression": "[x]",
+          "format": "commaNumber"
+        }
+      ]
+    },
+    {
+      "name": "Subs",
+      "html": [
+        "<div class='widget-icon purple subsWidget'>",
+        "  <span class='material-icons'>star</span>",
+        "  <span class='widget-text'>0</span>",
+        "</div>"
+      ],
+      "events": [
+        {
+          "name": "subCount",
+          "querySelector": ".widget-text",
+          "attribute": "innerText",
+          "expression": "[x]",
+          "format": "commaNumber"
+        }
+      ]
+    }
+  ]
+}

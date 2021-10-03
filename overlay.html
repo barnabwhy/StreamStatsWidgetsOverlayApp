@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Stats Widgets Overlay App | Overlay</title>
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/mdl2-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/overlay.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div id="widgets">
+    <!-- Widgets programatically added here -->
+  </div>
+  <div id="editControls">
+    <button id="editDone" class="wipeout">Done</button>
+    <button id="editCancel" class="red">Cancel</button>
+    <button id="addWidget" class="jiggle">Add Widget</button>
+  </div>
+  <div id="widgetList">
+    <button id="closeWidgetList" class="material-icons">close</button>
+    <h2>Add Widget</h2>
+    <hr style="border: 2px solid #9146FF;">
+    <div class="widgets-list">
+      <div>
+        <p>Stream Stats</p>
+        <button class="widget-add" w="streamStats">Add</button>
+      </div>
+    </div>
+  </div>
+  <div id="settingsWindow">
+    <button id="closeSettings" class="material-icons">close</button>
+    <h2>Widget Settings</h2>
+    <b>ID: </b><span>Widget ID</span>
+    <hr style="border: 2px solid #9146FF;">
+    <div class="setting-list"></div>
+  </div>
+  <div class="color-picker"></div>
+  <script src="js/overlay.js"></script>
+</body>
+</html>

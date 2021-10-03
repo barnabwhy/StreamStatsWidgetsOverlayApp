@@ -1,0 +1,272 @@
+body {
+  margin: 0;
+  color: white;
+  background-color: transparent;
+  overflow: hidden;
+  font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  cursor: default;
+}
+#widgets {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#widgets > * {
+  box-sizing: border-box;
+  cursor: grab;
+  position: absolute;
+
+  top: var(--pos-y);
+  left: var(--pos-x);
+  bottom: unset;
+  right: unset;
+}
+#widgets > *.align-top-right {
+  top: var(--pos-y);
+  right: var(--pos-x);
+  bottom: unset;
+  left: unset;
+}
+#widgets > *.align-bottom-left {
+  bottom: var(--pos-y);
+  left: var(--pos-x);
+  top: unset;
+  right: unset;
+}
+#widgets > *.align-bottom-right {
+  bottom: var(--pos-y);
+  right: var(--pos-x);
+  top: unset;
+  left: unset;
+}
+#widgets > *.align-top-mid {
+  top: var(--pos-y);
+  left: calc(50% + var(--pos-x));
+  transform: translateX(-50%);
+  bottom: unset;
+  right: unset;
+}
+#widgets > *.align-bottom-mid {
+  bottom: var(--pos-y);
+  left: calc(50% + var(--pos-x));
+  transform: translateX(-50%);
+  top: unset;
+  right: unset;
+}
+#widgets > *.align-mid-left {
+  top: calc(50% + var(--pos-y));
+  transform: translateY(-50%);
+  left: var(--pos-x);
+  bottom: unset;
+  right: unset;
+}
+#widgets > *.align-mid-mid {
+  top: calc(50% + var(--pos-y));
+  left: calc(50% + var(--pos-x));
+  transform: translate(-50%, -50%);
+  bottom: unset;
+  right: unset;
+}
+#widgets > *.align-mid-right {
+  top: calc(50% + var(--pos-y));
+  transform: translateY(-50%);
+  right: var(--pos-x);
+  bottom: unset;
+  left: unset;
+}
+
+#widgets > *:hover {
+  box-shadow: 0px 0px 0px 2px #00C8AF;
+  background-color: #00C8AF40;
+}
+#widgets > *:active {
+  cursor: grabbing;
+  background-color: #00C8AF80;
+  box-shadow: 0px 0px 0px 2px #00C8AF, 0px 2px 8px rgba(0,0,0,0.75);
+}
+
+.widget-icon {
+  font-size: 20px;
+  height: fit-content;
+  width: fit-content;
+  padding: 4px 16px;
+  border-radius: 64px;
+  line-height: 1.5;
+  margin: 6px;
+  width: max-content;
+}
+.widget-icon > .material-icons {
+  font-size: 16px;
+  vertical-align: middle;
+  margin: 0;
+}
+.widget-icon > .widget-text {
+  vertical-align: middle;
+  margin: 0 0 0 2px;
+}
+
+.widget-group {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: min-content;
+}
+
+#editControls {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  z-index: 1000;
+  visibility: hidden;
+  display: none;
+}
+
+.widgetSettings, .widgetDelete {
+  visibility: hidden;
+  display: none;
+  background-color: rgba(255,255,255,0.5);
+  color: black;
+  border-radius: 64px;
+  padding: 4px;
+  font-size: 20px !important;
+  margin: 0px;
+  z-index: 1000;
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.75);
+}
+#widgets > *:hover > .widgetSettings, #widgets > *:hover > .widgetDelete {
+  visibility: visible;
+  display: initial;
+}
+
+.widgetDelete {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+.widgetSettings {
+  position: absolute;
+  top: 2px;
+  right: 34px;
+}
+.widgetSettings:hover:not(:active), .widgetDelete:hover:not(:active) {
+  background-color: #dddddd;
+}
+
+#widgetList {
+  width: 320px;
+  height: 480px;
+  position: fixed;
+  z-index: 10000;
+  right: 8px;
+  top: 56px;
+  background: #0e0e10;
+  padding: 32px;
+  border-radius: 4px;
+  visibility: hidden;
+  display: none;
+  border: 1px solid #18181b;
+}
+.widgets-list > div > p {
+  width: 197px;
+  margin: 0;
+  transform: translateY(4px);
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+}
+#settingsWindow {
+  width: 320px;
+  height: 480px;
+  position: fixed;
+  z-index: 10000;
+  left: calc(50% - 160px);
+  top: calc(50% - 240px);
+  background: #0e0e10;
+  padding: 32px;
+  border-radius: 4px;
+  overflow-y: auto;
+  visibility: hidden;
+  display: none;
+  border: 1px solid #18181b;
+}
+.align-buttons  {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: fit-content;
+  margin-top: 4px;
+}
+.align-buttons > button {
+  margin: 0;
+  border-radius: 0px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 16px;
+  padding: 8px;
+}
+.align-buttons > button:not(.active) {
+  background: none;
+}
+
+#widgetList > h2, #settingsWindow > h2 {
+  margin: 16px 0 0 0;
+}
+
+#closeSettings, #closeWidgetList {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  margin: 0;
+  border-radius: 64px;
+  font-size: 16px !important;
+  padding: 8px;
+}
+
+.widget-setting {
+  margin: 16px 0;
+  font-size: 13px;
+}
+.widget-setting > .switch {
+  float: right;
+}
+.widget-setting > input[type="range"] {
+  float: right;
+}
+
+iframe, webview {
+  pointer-events: none;
+}
+
+.widget-progress {
+  top: calc(100% - 96px);
+  left: 64px;
+}
+.widget-bar {
+  height: 32px;
+  width: 1080px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.widget-bar > .bg {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 0;
+}
+.widget-bar > .width {
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 0;
+  transition: 0.3s width;
+}
+.widget-bar > .text-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

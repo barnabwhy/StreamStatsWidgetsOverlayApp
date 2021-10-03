@@ -1,0 +1,68 @@
+{
+  "name": "followGoal",
+  "display": "Follower Goal",
+  "type": "progress",
+  "pos": {
+    "x": 0,
+    "y": 64,
+    "align": "bottom-mid"
+  },
+  "settings": [
+    {
+      "name": "Follower goal",
+      "type": "number",
+      "action": "text",
+      "querySelector": ".total-text",
+      "default": 50
+    },
+    {
+      "name": "Width",
+      "type": "number",
+      "action": "style.width",
+      "querySelector": ".widget-bar",
+      "default": 1080
+    },
+    {
+      "name": "Height",
+      "type": "number",
+      "action": "style.height",
+      "querySelector": ".widget-bar",
+      "default": 32
+    }
+  ],
+  "css": {},
+  "widgets": [
+    {
+      "html": [
+        "<div class='widget-bar'>",
+        "  <div class='bg' style='opacity: 0.75; background: #18181b;'></div>",
+        "  <div class='width purple'></div>",
+        "  <div class='text-box'><span class='progress-text'>0</span>/<span class='total-text'>50</span> <span class='progress-percent'>(0%)</span></div>",
+        "</div>"
+      ],
+      "events": [
+        {
+          "name": "followerTotal",
+          "querySelector": ".width",
+          "attribute": "style.width",
+          "expression": "[min(x/{Follower goal}*100, 100)]%",
+          "format": "default"
+        },
+        {
+          "name": "followerTotal",
+          "querySelector": ".progress-text",
+          "attribute": "innerText",
+          "expression": "[x]",
+          "format": "default"
+        },
+        {
+          "name": "followerTotal",
+          "querySelector": ".progress-percent",
+          "attribute": "innerText",
+          "expression": "([round(x/{Follower goal}*100, 1)]%)",
+          "format": "default"
+        }
+      ]
+    }
+  ]
+}

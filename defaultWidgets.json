@@ -1,0 +1,72 @@
+[
+  {
+    "name": "followGoal",
+    "pos": {
+      "x": 0,
+      "y": 64,
+      "align": "bottom-mid"
+    },
+    "settings": [
+      {
+        "name": "Follower goal",
+        "type": "number",
+        "action": "text",
+        "querySelector": ".total-text",
+        "default": 50,
+        "val": 50
+      },
+      {
+        "name": "Width",
+        "type": "number",
+        "action": "style.width",
+        "querySelector": ".widget-bar",
+        "default": 1080,
+        "val": 1080
+      },
+      {
+        "name": "Height",
+        "type": "number",
+        "action": "style.height",
+        "querySelector": ".widget-bar",
+        "default": 32,
+        "val": 32
+      }
+    ],
+    "opacity": 1
+  },
+  {
+    "name": "streamStats",
+    "pos": {
+      "x": 8,
+      "y": 8,
+      "align": "top-left"
+    },
+    "settings": [
+      {
+        "name": "Viewer count",
+        "type": "toggle",
+        "action": "elemVisibility",
+        "querySelector": ".viewersWidget",
+        "default": true,
+        "val": true
+      },
+      {
+        "name": "Follower count",
+        "type": "toggle",
+        "action": "elemVisibility",
+        "querySelector": ".followersWidget",
+        "default": true,
+        "val": true
+      },
+      {
+        "name": "Sub count",
+        "type": "toggle",
+        "action": "elemVisibility",
+        "querySelector": ".subsWidget",
+        "default": true,
+        "val": true
+      }
+    ],
+    "opacity": 1
+  }
+]
