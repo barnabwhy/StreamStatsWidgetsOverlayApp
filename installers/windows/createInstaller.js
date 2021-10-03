@@ -20,6 +20,7 @@ function getInstallerConfig () {
     outputDirectory: path.join(outPath, 'windows-installer'),
     exe: 'StreamStatsWidgetsOverlayApp.exe',
     setupExe: 'StreamStatsWidgetsOverlayAppInstaller.exe',
-    setupIcon: path.join(rootPath, 'icon.ico')
+    setupIcon: path.join(rootPath, 'icon.ico'),
+    animation: path.join(rootPath, 'setup.gif')
   })
 }
