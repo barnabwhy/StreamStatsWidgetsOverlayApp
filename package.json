@@ -1,6 +1,6 @@
 {
   "name": "StreamStatsWidgetsOverlayApp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An app to show stream stats widgets in an overlay.",
   "main": "main.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "create-installer-win": "node installers/windows/createinstaller.js"
   },
   "author": "barnab_why",
+  "iconUrl": "https://raw.githubusercontent.com/barnabwhy/StreamStatsWidgetsOverlayApp/1.1.0/icon.png",
   "license": "GNU GPLv3",
   "dependencies": {
     "@twurple/api": "^5.0.3",
