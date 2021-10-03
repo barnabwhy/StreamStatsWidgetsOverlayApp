@@ -21,6 +21,6 @@ function getInstallerConfig () {
     exe: 'StreamStatsWidgetsOverlayApp.exe',
     setupExe: 'StreamStatsWidgetsOverlayAppInstaller.exe',
     setupIcon: path.join(rootPath, 'icon.ico'),
-    animation: path.join(rootPath, 'setup.gif')
+    loadingGif: path.join(rootPath, 'setup.gif')
   })
 }
