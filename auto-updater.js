@@ -21,7 +21,7 @@ function init(mainWindow) {
 
   autoUpdater.setFeedURL(updateFeed)
 
-  autoUpdater.once('update-downloaded', (ev, err) => {
+  autoUpdater.once('update-downloaded', (event, releaseNotes, releaseName) => {
     mainWindow.webContents.send('update-available', { name: releaseName, notes: releaseNotes })
   })
 
