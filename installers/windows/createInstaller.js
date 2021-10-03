@@ -22,6 +22,6 @@ function getInstallerConfig () {
     setupExe: 'StreamStatsWidgetsOverlayAppInstaller.exe',
     setupIcon: path.join(rootPath, 'icon.ico'),
     loadingGif: path.join(rootPath, 'setup.gif'),
-    remoteReleases: "https://stream-stats-widgets-overlay-app-update-server.vercel.app/update/win32/latest/RELEASES"
+    remoteReleases: "https://stream-stats-widgets-overlay-app-update-server.vercel.app/update/win32/latest"
   })
 }
