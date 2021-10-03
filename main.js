@@ -77,7 +77,7 @@ function createWindow () {
   overlayWindow.setIgnoreMouseEvents(true);
   overlayWindow.setAlwaysOnTop(true, 'screen-saver');
   overlayWindow.loadFile('overlay.html');
-  overlayWindow.webContents.openDevTools()
+  // overlayWindow.webContents.openDevTools()
 
   overlayWindow.webContents.on('will-attach-webview', (e, webPreferences, params) => {
     webPreferences.nodeIntegration = false;
