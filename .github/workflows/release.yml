@@ -17,13 +17,22 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run package-win --if-present
-    - run: npm run create-installer-win --if-present
     
+    - uses: suisei-cn/actions-download-file@v1
+    - name: Download remote RELEASES file
+      with:
+        url: "https://stream-stats-widgets-overlay-app-update-server.vercel.app/update/win32/latest/RELEASES"
+        target: release-builds/windows-installer/
+        
     - name: Get the version
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       shell: bash
+    
+    - name: Package Windows application
+      run: npm run package-win --if-present
+    - name: Create Windows installer
+      run: npm run create-installer-win --if-present
     
     - name: Upload RELEASES
       uses: svenstaro/upload-release-action@v2
