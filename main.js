@@ -19,17 +19,18 @@ setInterval(() => {
 }, 60000)
 
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['Restart', 'Later'],
-    title: 'Application Update',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
-    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-  }
+  // const dialogOpts = {
+  //   type: 'info',
+  //   buttons: ['Restart', 'Later'],
+  //   title: 'Application Update',
+  //   message: process.platform === 'win32' ? releaseNotes : releaseName,
+  //   detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+  // }
 
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
-    if (returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
+  // dialog.showMessageBox(dialogOpts).then((returnValue) => {
+  //   if (returnValue.response === 0) autoUpdater.quitAndInstall()
+  // })
+  mainWindow.webContents.send("update-available")
 })
 
 autoUpdater.on('error', message => {
@@ -155,6 +156,10 @@ ipcMain.on('overlay-toggle', (event, arg) => {
 })
 ipcMain.on('overlay-reload', (event, arg) => {
   overlayWindow.reload()
+})
+
+ipcMain.on("update-and-restart", (event, arg) => {
+  autoUpdater.quitAndInstall()
 })
 
 let editing = false;
