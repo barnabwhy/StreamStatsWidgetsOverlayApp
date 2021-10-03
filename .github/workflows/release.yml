@@ -18,10 +18,12 @@ jobs:
         cache: 'npm'
     - run: npm ci
         
-    - name: Get the version
-      id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      shell: bash
+    - name: Get package.json version
+      id: version
+      uses: notiz-dev/github-action-json-property@release
+      with: 
+          path: 'package.json'
+          prop_path: 'version'
     
     - name: Package Windows application
       run: npm run package-win --if-present
@@ -41,8 +43,8 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: release-builds/windows-installer/StreamStatsWidgetsOverlayApp-${{ steps.get_version.outputs.VERSION }}-full.nupkg
-        asset_name: StreamStatsWidgetsOverlayApp-${{ steps.get_version.outputs.VERSION }}-full.nupkg
+        file: release-builds/windows-installer/StreamStatsWidgetsOverlayApp-${{steps.version.outputs.prop}}-full.nupkg
+        asset_name: StreamStatsWidgetsOverlayApp-${{steps.version.outputs.prop}}-full.nupkg
         tag: ${{ github.ref }}
         overwrite: true
         body: ""
@@ -50,8 +52,8 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: release-builds/windows-installer/StreamStatsWidgetsOverlayApp-${{ steps.get_version.outputs.VERSION }}-delta.nupkg
-        asset_name: StreamStatsWidgetsOverlayApp-${{ steps.get_version.outputs.VERSION }}-delta.nupkg
+        file: release-builds/windows-installer/StreamStatsWidgetsOverlayApp-${{steps.version.outputs.prop}}-delta.nupkg
+        asset_name: StreamStatsWidgetsOverlayApp-${{steps.version.outputs.prop}}-delta.nupkg
         tag: ${{ github.ref }}
         overwrite: true
         body: ""
