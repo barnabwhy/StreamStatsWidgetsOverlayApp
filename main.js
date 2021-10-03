@@ -180,7 +180,6 @@ async function getWidget(name) {
           if(error) {
             resolve(undefined);
           } else {
-            fs.promises.copyFile(`${basepath}/widgets/${name}.json`, `${adPath}/Widgets/${name}.json`)
             const widget = {...blankWidget, ...JSON.parse(await fs.promises.readFile(`${basepath}/widgets/${name}.json`, { encoding: "utf8" }))};
             resolve(widget);
           }
@@ -226,10 +225,10 @@ fs.stat(`${adPath}/Widgets`, (error, stat) => {
 ipcMain.handle('get-widgets-list', async (event, arg) => {
   const widgets = await fs.promises.readdir(`${basepath}/widgets`);
   const appdataWidgets = await fs.promises.readdir(`${adPath}/Widgets`);
-  await Promise.all(widgets.map(w => {
-    if(appdataWidgets.indexOf(w) == -1) fs.promises.copyFile(`${basepath}/widgets/${w}`, `${adPath}/Widgets/${w}`);
-  }));
-  let list = await fs.promises.readdir(`${adPath}/Widgets`);
+  // await Promise.all(widgets.map(w => {
+  //   if(appdataWidgets.indexOf(w) == -1) fs.promises.copyFile(`${basepath}/widgets/${w}`, `${adPath}/Widgets/${w}`);
+  // }));
+  let list = appdataWidgets.concat(widgets);
   let display = (await Promise.all(list.map((w, i) => {
     wName = path.basename(w, path.extname(w));
     return getWidget(wName)
