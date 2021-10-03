@@ -20,3 +20,6 @@ Only works with Twitch.
 - Warnings on widgets that may be potentially unsafe
 
 You can also make suggestions [here](https://github.com/barnabwhy/StreamStatsWidgetsOverlayApp/discussions/categories/ideas)
+
+## Safety Warning
+Never use widgets made by people you don't trust! Even though I have tried my best to remove all possibilities for a widget to affect your computer in dangerous ways, they could still contain malicious scripts and it's best to play it safe than to potentially use a malicious widget and risk the safety of your computer.

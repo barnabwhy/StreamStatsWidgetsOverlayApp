@@ -46,6 +46,15 @@ jobs:
         tag: ${{ github.ref }}
         overwrite: true
         body: ""
+    - name: Upload DELTA NUPKG
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: release-builds/windows-installer/StreamStatsWidgetsOverlayApp-${{ steps.get_version.outputs.VERSION }}-delta.nupkg
+        asset_name: StreamStatsWidgetsOverlayApp-${{ steps.get_version.outputs.VERSION }}-delta.nupkg
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: ""
     - name: Upload EXE
       uses: svenstaro/upload-release-action@v2
       with:
