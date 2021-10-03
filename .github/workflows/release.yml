@@ -17,12 +17,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    
-    - name: Download remote RELEASES file
-      uses: suisei-cn/actions-download-file@v1
-      with:
-        url: "https://stream-stats-widgets-overlay-app-update-server.vercel.app/update/win32/latest/RELEASES"
-        target: release-builds/windows-installer/
         
     - name: Get the version
       id: get_version
