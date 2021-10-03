@@ -1,42 +1,11 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, Menu, autoUpdater, dialog } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 // Squirrel Events
-const setupEvents = require('./installers/setupEvents')
-if (setupEvents.handleSquirrelEvent()) {
-  // squirrel event handled and app will exit in 1000ms, so don't do anything else
-  return;
-}
+const autoUpdater = require('./auto-updater.js')
+if (require('electron-squirrel-startup')) app.quit()
 
-// Auto updater
-const server = 'https://stream-stats-widgets-overlay-app-update-server.vercel.app/'
-const url = `${server}/update/${process.platform}/${app.getVersion()}`
-
-autoUpdater.setFeedURL({ url })
-
-setInterval(() => {
-  autoUpdater.checkForUpdates()
-}, 60000)
-
-autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-  // const dialogOpts = {
-  //   type: 'info',
-  //   buttons: ['Restart', 'Later'],
-  //   title: 'Application Update',
-  //   message: process.platform === 'win32' ? releaseNotes : releaseName,
-  //   detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-  // }
-
-  // dialog.showMessageBox(dialogOpts).then((returnValue) => {
-  //   if (returnValue.response === 0) autoUpdater.quitAndInstall()
-  // })
-  mainWindow.webContents.send("update-available")
-})
-
-autoUpdater.on('error', message => {
-  console.error('There was a problem updating the application')
-  console.error(message)
-})
+const isDev = require('electron-is-dev')
 
 const path = require('path')
 const fs = require('fs')
@@ -74,6 +43,7 @@ function createWindow () {
   // mainWindow.webContents.openDevTools()
 
   mainWindow.webContents.on('did-finish-load', e => {
+    if(!isDev) autoUpdater.init(mainWindow)
     if(token != null && channel != "") {
       mainWindow.webContents.send("twitch-auth", [true, channel])
     }
