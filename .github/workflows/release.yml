@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - 'v*'
-https://github.com/barnabwhy/StreamStatsWidgetsOverlayApp
 jobs:
   build:
     name: Publish binaries
