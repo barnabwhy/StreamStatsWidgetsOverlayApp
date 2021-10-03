@@ -20,7 +20,7 @@ jobs:
         
     - name: Get package.json version
       id: package-version
-      uses: martinbeentjes/npm-get-version-action@master
+      uses: Saionaro/extract-package-version@v1.0.6
     
     - name: Package Windows application
       run: npm run package-win --if-present
