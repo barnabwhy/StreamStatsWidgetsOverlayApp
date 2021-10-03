@@ -29,7 +29,8 @@ function createWindow () {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      preload: path.join(__dirname, "preload.js")
+      preload: path.join(__dirname, "preload.js"),
+      backgroundThrottling: false
     }
   })
   Menu.setApplicationMenu(null);
@@ -69,13 +70,25 @@ function createWindow () {
       contextIsolation: true,
       enableRemoteModule: false,
       preload: path.join(__dirname, "preload_overlay.js"),
-      backgroundThrottling: false
+      backgroundThrottling: false,
+      webviewTag: true
     }
   })
   overlayWindow.setIgnoreMouseEvents(true);
   overlayWindow.setAlwaysOnTop(true, 'screen-saver');
   overlayWindow.loadFile('overlay.html');
-  // overlayWindow.webContents.openDevTools()
+  overlayWindow.webContents.openDevTools()
+
+  overlayWindow.webContents.on('will-attach-webview', (e, webPreferences, params) => {
+    webPreferences.nodeIntegration = false;
+    webPreferences.nodeIntegrationInSubFrames = false;
+    webPreferences.plugins = false;
+    webPreferences.disablePopups = true;
+    webPreferences.webSecurity = true;
+    webPreferences.contextIsolation = true;
+    
+    webPreferences.preload = undefined;
+  });
 
   overlayWindow.webContents.on('did-finish-load', e => {
     if(editing) {
@@ -181,11 +194,13 @@ async function getWidget(name) {
             resolve(undefined);
           } else {
             const widget = {...blankWidget, ...JSON.parse(await fs.promises.readFile(`${basepath}/widgets/${name}.json`, { encoding: "utf8" }))};
+            widget.name = name;
             resolve(widget);
           }
         });
       } else {
         const widget = {...blankWidget, ...JSON.parse(await fs.promises.readFile(`${adPath}/Widgets/${name}.json`, { encoding: "utf8" }))};
+        widget.name = name;
         resolve(widget);
       }
     });

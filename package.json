@@ -1,6 +1,6 @@
 {
   "name": "StreamStatsWidgetsOverlayApp",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "An app to show stream stats widgets in an overlay.",
   "main": "main.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "@twurple/api": "^5.0.3",
     "@twurple/auth": "^5.0.4",
-    "@twurple/auth-electron": "^5.0.3",
+    "@twurple/auth-electron": "^5.0.4",
     "@twurple/chat": "^5.0.3",
     "electron-is-dev": "^2.0.0",
     "electron-squirrel-startup": "^1.0.0",
