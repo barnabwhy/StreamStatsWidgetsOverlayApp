@@ -3,6 +3,11 @@ const os = require('os')
 const autoUpdater = electron.autoUpdater
 const appVersion = require('./package.json').version
 
+autoUpdater.on('error', message => {
+  console.error('There was a problem updating the application');
+  console.error(message);
+})
+
 let updateFeed = ''
 let initialized = false
 const platform = `${os.platform()}_${os.arch()}`
