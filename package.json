@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "electron": "^11.5.0",
-    "electron-packager": "^15.4.0"
+    "electron-packager": "^15.4.0",
+    "electron-winstaller": "^5.0.0"
   }
 }
