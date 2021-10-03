@@ -10,12 +10,12 @@ Only works with Twitch.
 - Automatically refreshes widgets every 5 seconds
 - Keeps track of viewers, followers and subs
 - Fully modular system with the capability for custom widgets
+- WebView widgets (which enable the use of Streamlabs widgets for example)
+- Auto-updating installer
 - And more to come...
 
 ## Roadmap
 
-- BrowserView widgets (which enable the use of Streamlabs widgets for example)
-- Auto-updating installer
 - Online widgets browsing site
 - Warnings on widgets that may be potentially unsafe
 
