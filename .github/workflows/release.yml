@@ -18,14 +18,32 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run package-win --if-present
-    - run: npm run create-instaler-win --if-present
+    - run: npm run create-installer-win --if-present
     
-    - name: Upload binaries to release
+    - name: Upload RELEASES
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: release-builds/windows-installer/RELEASES
         asset_name: RELEASES
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: ""
+    - name: Upload NUPKG
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: release-builds/windows-installer/StreamStatsWidgetsOverlayApp-${{ github.ref }}-full.nupkg
+        asset_name: StreamStatsWidgetsOverlayApp-${{ github.ref }}-full.nupkg
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: ""
+    - name: Upload EXE
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: release-builds/windows-installer/StreamStatsWidgetsOverlayAppInstaller.exe
+        asset_name: StreamStatsWidgetsOverlayAppInstaller.exe
         tag: ${{ github.ref }}
         overwrite: true
         body: ""
