@@ -145,6 +145,10 @@ button.red:hover:not(:active) {
 #windowControls button:active {
   background: rgba(255, 255, 255, 0.2);
 }
+#windowControls button#appUpdate {
+  visibility: hidden;
+  display: none;
+}
 #windowControls button#windowClose:hover {
   background: rgb(255, 0, 0);
 }

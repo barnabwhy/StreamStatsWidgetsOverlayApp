@@ -1,3 +1,11 @@
+document.getElementById("appUpdate").addEventListener("click", e => {
+  window.api.send("update-and-restart");
+})
+window.api.receive("update-available", arg => {
+  document.getElementById("appUpdate").style.visibility = "visible";
+  document.getElementById("appUpdate").style.display = "inline-block";
+});
+
 document.getElementById("windowReload").addEventListener("click", e => {
   window.api.send("reload");
 })

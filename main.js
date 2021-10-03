@@ -1,5 +1,43 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, autoUpdater, dialog } = require('electron')
+
+// Squirrel Events
+const setupEvents = require('./installers/setupEvents')
+if (setupEvents.handleSquirrelEvent()) {
+  // squirrel event handled and app will exit in 1000ms, so don't do anything else
+  return;
+}
+
+// Auto updater
+const server = 'https://stream-stats-widgets-overlay-app-update-server.vercel.app/'
+const url = `${server}/update/${process.platform}/${app.getVersion()}`
+
+autoUpdater.setFeedURL({ url })
+
+setInterval(() => {
+  autoUpdater.checkForUpdates()
+}, 60000)
+
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+  // const dialogOpts = {
+  //   type: 'info',
+  //   buttons: ['Restart', 'Later'],
+  //   title: 'Application Update',
+  //   message: process.platform === 'win32' ? releaseNotes : releaseName,
+  //   detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+  // }
+
+  // dialog.showMessageBox(dialogOpts).then((returnValue) => {
+  //   if (returnValue.response === 0) autoUpdater.quitAndInstall()
+  // })
+  mainWindow.webContents.send("update-available")
+})
+
+autoUpdater.on('error', message => {
+  console.error('There was a problem updating the application')
+  console.error(message)
+})
+
 const path = require('path')
 const fs = require('fs')
 var basepath = app.getAppPath();
@@ -118,6 +156,10 @@ ipcMain.on('overlay-toggle', (event, arg) => {
 })
 ipcMain.on('overlay-reload', (event, arg) => {
   overlayWindow.reload()
+})
+
+ipcMain.on("update-and-restart", (event, arg) => {
+  autoUpdater.quitAndInstall()
 })
 
 let editing = false;

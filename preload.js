@@ -16,13 +16,13 @@ contextBridge.exposeInMainWorld(
   "api", {
       send: (channel, data) => {
           // whitelist channels
-          let validChannels = ["reload", "minimize", "close", "twitch-auth", "overlay-toggle", "overlay-reload", "widget-edit"];
+          let validChannels = ["reload", "minimize", "close", "twitch-auth", "overlay-toggle", "overlay-reload", "widget-edit", "update-and-restart"];
           if (validChannels.includes(channel)) {
               ipcRenderer.send(channel, data);
           }
       },
       receive: (channel, func) => {
-          let validChannels = ["startEdit", "endEdit", "twitch-auth", "viewerCount", "followerCount", "followerTotal", "subCount", "sub", "chat-event"];
+          let validChannels = ["startEdit", "endEdit", "twitch-auth", "viewerCount", "followerCount", "followerTotal", "subCount", "sub", "chat-event", "update-available"];
           if (validChannels.includes(channel)) {
               // Deliberately strip event as it includes `sender` 
               ipcRenderer.on(channel, (event, arg) => func(arg));
