@@ -38,5 +38,6 @@ function init(mainWindow) {
 }
 
 module.exports = {
-  init
+  init,
+  quitAndInstall: autoUpdater.quitAndInstall
 }
