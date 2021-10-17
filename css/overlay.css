@@ -91,8 +91,8 @@ body {
   font-size: 20px;
   height: fit-content;
   width: fit-content;
-  padding: 4px 16px;
-  border-radius: 64px;
+  padding: 4px 12px;
+  border-radius: 0;
   line-height: 1.5;
   margin: 6px;
   width: max-content;
@@ -163,7 +163,7 @@ body {
   top: 56px;
   background: #0e0e10;
   padding: 32px;
-  border-radius: 4px;
+  border-radius: 0;
   visibility: hidden;
   display: none;
   border: 1px solid #18181b;
@@ -185,11 +185,11 @@ body {
   top: calc(50% - 240px);
   background: #0e0e10;
   padding: 32px;
-  border-radius: 4px;
+  border-radius: 0;
   overflow-y: auto;
   visibility: hidden;
   display: none;
-  border: 1px solid #18181b;
+  border: 2px solid #18181b;
 }
 .align-buttons  {
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -202,7 +202,7 @@ body {
   display: inline-block;
   border: 1px solid rgba(255, 255, 255, 0.15);
   font-size: 16px;
-  padding: 8px;
+  padding: 8px 20px;
 }
 .align-buttons > button:not(.active) {
   background: none;
@@ -214,10 +214,10 @@ body {
 
 #closeSettings, #closeWidgetList {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0;
+  right: 0;
   margin: 0;
-  border-radius: 64px;
+  border-radius: 0;
   font-size: 16px !important;
   padding: 8px;
 }
@@ -244,7 +244,7 @@ iframe, webview {
 .widget-bar {
   height: 32px;
   width: 1080px;
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
 }
 .widget-bar > .bg {

@@ -60,7 +60,7 @@ h1 ,h2 ,p, span {
 input[type=text], input[type=number] {
   font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  border-radius: 0;
   color: white;
   border: none;
   outline: none;
@@ -79,7 +79,7 @@ input::-webkit-inner-spin-button {
 button {
   font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  border-radius: 0;
   color: white;
   border: none;
   outline: none;

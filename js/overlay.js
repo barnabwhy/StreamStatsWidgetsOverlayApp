@@ -152,7 +152,7 @@ document.getElementById("editDone").addEventListener("click", () => {
   document.getElementById("widgetList").style.display = "none";
 })
 document.getElementById("editCancel").addEventListener("click", () => {
-  initialiseWidgets(preEditWidgets);
+  initialiseWidgets(Object.values(preEditWidgets));
   window.api.send("widgets-cancel");
   document.getElementById("editControls").style.visibility = "hidden";
   document.getElementById("editControls").style.display = "none";
@@ -165,7 +165,7 @@ document.getElementById("editCancel").addEventListener("click", () => {
 
 document.addEventListener("keydown", (e) => {
   if(e.key != "Escape") return
-  initialiseWidgets(preEditWidgets);
+  initialiseWidgets(Object.values(preEditWidgets));
   window.api.send("widgets-cancel");
   document.getElementById("editControls").style.visibility = "hidden";
   document.getElementById("editControls").style.display = "none";
